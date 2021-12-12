@@ -2,5 +2,7 @@
     background-image: url("../images/backgroundimg1.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 300px 150px;
+    background-size: cover;
+    height: 500px;
+     
 }

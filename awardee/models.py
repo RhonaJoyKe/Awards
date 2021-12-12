@@ -45,9 +45,7 @@ class Project(models.Model):
     def __str__(self):
         return self.user.username       
 
-    def __str__(self):
-        return self.image_name
-
+    
 
 
 

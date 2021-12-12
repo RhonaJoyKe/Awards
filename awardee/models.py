@@ -23,7 +23,7 @@ class Project(models.Model):
         project = cls.objects.filter(user=user)
         return project
 
-    def save_image(self):
+    def save_project(self):
         self.save()
 
     def delete_project(self):
@@ -101,3 +101,7 @@ class AddProjectForm(ModelForm):
     class Meta:
         model = Project
         fields = ['title','description','image','url']
+class UpdateProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio','profile_photo']

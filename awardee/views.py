@@ -7,18 +7,18 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
-def add_image(request):
+    project=Project.objects.all()
     if request.method=='POST':
         current_user=request.user
         form=AddProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            image=form.save(commit=False)
-            image.user=current_user
-            image.save()
-            messages.success(request,('Image was posted successfully!'))
+            project=form.save(commit=False)
+            project.user=current_user
+            project.save()
+            messages.success(request,('Project was posted successfully!'))
             return redirect('home')
     else:
             form=AddProjectForm()
-    return render(request,'add_project.html',{'form':form})
+    return render(request,'index.html',{'form':form,'projects':project})
+
 

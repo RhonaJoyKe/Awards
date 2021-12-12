@@ -5,6 +5,7 @@ certifi==2021.10.8
 cloudinary==1.28.0
 Django==4.0
 django-bootstrap4==21.1
+django-crispy-forms==1.13.0
 django-registration-redux==2.9
 psycopg2==2.9.2
 six==1.16.0

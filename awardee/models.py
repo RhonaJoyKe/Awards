@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.forms import ModelForm, widgets
 # Create your models here.
 
 # image model 
@@ -98,3 +99,7 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.user.username
+class AddProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title','description','image','url']

@@ -9,7 +9,7 @@ class Project(models.Model):
     """
     This class takes care of the posted projects
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
 
     image = CloudinaryField('image')
     title = models.CharField(max_length=50)

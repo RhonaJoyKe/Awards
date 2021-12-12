@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'awardee',
+    'cloudinary',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,10 +68,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'awards.wsgi.application'
 
@@ -82,7 +89,11 @@ DATABASES = {
         'PASSWORD': '12345'
     }
 }
-
+cloudinary.config(
+    cloud_name='dbalxadqx',
+    api_key='888255573867367',
+    api_secret='Ii9nAE7eZU9vii96eyeCDb8WlZ0',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'awardee',
+    'rest_framework',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',

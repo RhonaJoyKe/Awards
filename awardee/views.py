@@ -26,7 +26,8 @@ def profile(request,user_id):
     # current_user = request.user
     projects = Project.objects.filter(user=current_user)
     profile = get_object_or_404(Profile,id = current_user.id)
-    return render(request, 'profile/profile.html', {"projects": projects, "profile": profile})
+    form=AddProjectForm()
+    return render(request, 'profile/profile.html', {"projects": projects,'form':form, "profile": profile})
 def update_profile(request):
   	#Get the profile
     current_user=request.user

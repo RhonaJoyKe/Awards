@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth.decorators import login_required
 from django.http  import HttpResponse,Http404
-from .models import AddProjectForm, Project,Profile,Rating, UpdateProfileForm
+from .models import AddProjectForm, Project,Profile,Rating, UpdateProfileForm,RatingForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -46,6 +46,15 @@ def update_profile(request):
     else:
         form=UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'form':form})
+def project_details(request, project_id):
+  form = RatingForm(request.POST)
+  try:
+    project_details = Project.objects.get(pk = project_id)
+    project_rates = Rating.objects.filter(project__id=project_id).all()
+  except Project.DoesNotExist:
+    raise Http404
+  
+  return render(request, 'ProDetails.html', {"details":project_details, "votes":project_rates, "form":form})
 def search_results(request):
   if 'name' in request.GET and request.GET["name"]:
     name = request.GET.get('name')

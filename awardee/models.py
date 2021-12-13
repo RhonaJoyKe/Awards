@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 from django.forms import ModelForm, widgets
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.forms import ModelForm, widgets
+from django.dispatch import receiver
+from django import forms
 # Create your models here.
 
 # image model 
@@ -110,6 +113,9 @@ class AddProjectForm(ModelForm):
     class Meta:
         model = Project
         fields = ['title','description','image','url']
+        widgets= {
+            'url':forms.Textarea(attrs={'rows':2,})
+        }
 class UpdateProfileForm(ModelForm):
     class Meta:
         model = Profile

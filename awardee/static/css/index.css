@@ -11,3 +11,8 @@
 #profile{
     display: flex;
 }
+.navbar-form{
+    margin-top: 250px;
+    width: 500px;
+    margin-left: 30%;
+}

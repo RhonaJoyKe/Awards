@@ -6,12 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12" id="bgimage">
-            <form class="navbar-form" role="search" method="" action="{% url 'search_results' %}" style="margin-right:150px;" >
+            <form class="navbar-form" role="search" method="" action="" style="margin-right:150px;" >
                 {% csrf_token %}
-                <div class="input-group">
+                <div class="input-group" >
                 <input type="text" class="form-control" placeholder="SearchByProfile" name="name">
                 <div class="input-group-btn">
-                <button class="btn btn-dark" style="margin-left: 5px;" type="submit">Search</button>
+                <button class="btn btn-warning" style="margin-left: 5px;" type="submit">Search</button>
                 </div>
                 </div>
                 </form>

@@ -13,6 +13,19 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <li class="dropdown mx-4 btn btn-sm ">
+          <a href="#" class="dropdown-toggle btn btn-dark" data-toggle="dropdown" role="button" aria-expanded="false">APIs <span class="caret"></span></a>
+  
+          <ul class="dropdown-menu" role="menu">
+            <li class="btn btn-default">
+              <a href="api/projects/" target="_blank">Projects API</a>
+            </li>
+            <li class="btn btn-default">
+              <a href="api/profiles/" target="_blank">Profile API</a>
+            </li>
+  
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/user/{{request.user.id}}">Profile</a>
         </li>

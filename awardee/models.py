@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.forms import ModelForm, widgets
 from django.dispatch import receiver
 from django import forms
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 # image model 
@@ -92,12 +93,24 @@ class Profile(models.Model):
 
 class Rating(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    design = models.IntegerField(default=0)
-    userbility = models.IntegerField(default=0)
-    content = models.IntegerField(default=0)
+    design = models.IntegerField(default=0, validators=[
+                                       MaxValueValidator(10),
+                                       MinValueValidator(1)
+                                     ])
+    userbility = models.IntegerField(default=0,validators=[
+                                       MaxValueValidator(10),
+                                       MinValueValidator(1)
+                                     ])
+    content = models.IntegerField(default=0,validators=[
+                                       MaxValueValidator(10),
+                                       MinValueValidator(1)
+                                     ])
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    average_rate = models.IntegerField(default=0, blank=True, null=True)
-    date = models.DateTimeField(auto_now_add=True, null=True)
+    average_rate = models.IntegerField(default=0, decimal_places=2,validators=[
+                                    MaxValueValidator(10),
+                                    MinValueValidator(1)
+                                  ])
+
 
 
     def update(self):
@@ -124,3 +137,7 @@ class UpdateProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = ['bio','profile_photo']
+class RatingForm(forms.ModelForm):
+  class Meta:
+    model = Rating
+    fields = ['design', 'usability', 'content']

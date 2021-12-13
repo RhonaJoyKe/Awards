@@ -6,6 +6,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ('profile_photo', 'bio', 'user')
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Profile
-        fields = ('profile_photo', 'bio', 'user')
+        model = Project
+        fields = ('title', 'image', 'description', 'url', ' posted_date', 'user')
 

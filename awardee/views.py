@@ -5,6 +5,10 @@ from django.http  import HttpResponse,Http404
 from .models import AddProjectForm, Project,Profile,Rating, UpdateProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer,ProjectSerializer
+
 
 # Create your views here.
 def home(request):
@@ -51,5 +55,10 @@ def search_results(request):
     return render(request, 'search.html', {"users": users, "project_images": images})
   else:
     return render(request, 'search.html')
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Project.objects.all()
+        serializers = ProjectSerializer(all_merch, many=True)
+        return Response(serializers.data)
 
 

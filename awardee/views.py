@@ -55,10 +55,16 @@ def search_results(request):
     return render(request, 'search.html', {"users": users, "project_images": images})
   else:
     return render(request, 'search.html')
-class MerchList(APIView):
+class ProjectList(APIView):
     def get(self, request, format=None):
-        all_merch = Project.objects.all()
-        serializers = ProjectSerializer(all_merch, many=True)
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProjectSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+
 
 

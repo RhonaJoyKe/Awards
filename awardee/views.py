@@ -42,5 +42,14 @@ def update_profile(request):
     else:
         form=UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'form':form})
+def search_results(request):
+  if 'name' in request.GET and request.GET["name"]:
+    name = request.GET.get('name')
+    users = Profile.search_profiles(name)
+    images = Project.search_project(name)
+    print(users)
+    return render(request, 'search.html', {"users": users, "project_images": images})
+  else:
+    return render(request, 'search.html')
 
 

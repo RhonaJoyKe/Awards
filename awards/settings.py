@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     
     'awardee',
     'cloudinary',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    'rest_framework'
+   
 ]
 
 MIDDLEWARE = [

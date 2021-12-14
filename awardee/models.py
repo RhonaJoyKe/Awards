@@ -106,7 +106,7 @@ class Rating(models.Model):
                                        MinValueValidator(1)
                                      ])
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    average_rate = models.IntegerField(default=0, decimal_places=2,validators=[
+    average_rate = models.IntegerField(default=0, validators=[
                                     MaxValueValidator(10),
                                     MinValueValidator(1)
                                   ])
@@ -140,4 +140,4 @@ class UpdateProfileForm(ModelForm):
 class RatingForm(forms.ModelForm):
   class Meta:
     model = Rating
-    fields = ['design', 'usability', 'content']
+    fields = ['design', 'userbility', 'content']

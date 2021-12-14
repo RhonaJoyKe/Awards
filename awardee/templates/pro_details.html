@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load bootstrap4%}
+{% load mathfilters %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <h2 class="text-center"><em><strong>{{details.project_title}} Website</strong></em></h2>
+
+  <div class="row">
+    
+    <div class="col-md-6 col-lg-6">
+      <div class="text-center">
+        <img src="{{details.screenshot.url}}" class="img-fluid detailimage" alt="project display">
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-5">
+      <hr>
+      <h2 class="text-center" style="color: brown; text-decoration:underline;">Description</h2>
+      <p class="text-center">{{details.project_description}}</p>
+      <p><strong><small>Posted on: <em>{{details.date_posted}}</em></small></strong></p>
+      <p><small><em>Posted By: <strong>{{details.user}}</strong></em></small></p>
+      <a href="{{details.live_link}}" target="_blank"><strong>Live Link</strong></a>
+      <hr>
+
+      <form action="{%url 'submit_rating' details.id %}" method="post">
+        {% csrf_token %}
+        <h2 class="text-center" style="color: brown; text-decoration:underline;">Rate the project</h2>
+
+        {% bootstrap_form form %}
+
+        <div class="text-center">
+          <input type="submit" class="btn btn-sm btn-success" value="post rating">
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h2 class="text-center" style="color: brown; text-decoration:underline;">Ratings</h2>
+
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Voted By</th>
+            <th scope="col">design score</th>
+            <th scope="col">usability score</th>
+            <th scope="col">content score</th>
+            <th scope="col" style="color: brown;">Avg Score</th>
+          </tr>
+        </thead>
+        {%for vote in votes%}
+        <tbody>
+          <tr>
+            <td>{{vote.user}}</td>
+            <td>{{vote.design_score}}</td>
+            <td>{{vote.usability_score}}</td>
+            <td>{{vote.content_score}}</td>
+            <td><small><b><em style="color: brown;">{{ vote.design_score|add:vote.usability_score|add:vote.content_score|div:3|floatformat:2 }}</em></b></small></td>
+          </tr>
+        </tbody>
+        {%endfor%}
+      </table>
+    </div>
+    
+  </div>
+
+</div>
+
+{% endblock%}

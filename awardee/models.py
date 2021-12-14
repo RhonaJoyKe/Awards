@@ -112,7 +112,7 @@ class Rating(models.Model):
                                   ])
 
 
-
+   
     def update(self):
         self.save()
 

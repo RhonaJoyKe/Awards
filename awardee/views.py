@@ -51,6 +51,7 @@ def update_profile(request):
     return render(request,'profile/update_profile.html',{'form':form})
 @login_required(login_url='/accounts/login/')
 def project_details(request, project_id):
+  
   form = RatingForm(request.POST)
   try:
     project_details = Project.objects.get(pk = project_id)
@@ -61,14 +62,19 @@ def project_details(request, project_id):
   return render(request, 'pro_details.html', {"details":project_details, "rates":project_rates, "form":form})
 @login_required(login_url='/accounts/login/')
 def search_results(request):
+  form=AddProjectForm()
   if 'search' in request.GET and request.GET['search']:
+    
     title_search = request.GET.get('search')
     searched_projects = Project.search_by_title(title_search)
+  
     message = f"{title_search}"
     return render(request, 'search-results.html', {"message":message, "projects":searched_projects})
   else:
     message = "You have not yet made a search"
-    return render(request, 'search.html', {"message":message})
+
+    return render(request, 'search.html', {"message":message,"form":form})
+
 
 @login_required(login_url='/accounts/login/')
 def submit_rates(request, project_id):

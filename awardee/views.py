@@ -54,7 +54,7 @@ def project_details(request, project_id):
   except Project.DoesNotExist:
     raise Http404
   
-  return render(request, 'pro_details.html', {"details":project_details, "votes":project_rates, "form":form})
+  return render(request, 'pro_details.html', {"details":project_details, "rates":project_rates, "form":form})
 def search_results(request):
   if 'name' in request.GET and request.GET["name"]:
     name = request.GET.get('name')

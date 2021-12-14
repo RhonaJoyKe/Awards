@@ -5,23 +5,23 @@
 {% block content %}
 
 <div class="container-fluid">
-  <h2 class="text-center"><em><strong>{{details.project_title}} Website</strong></em></h2>
+  <h2 class="text-center"><em><strong>{{details.title}} Website</strong></em></h2>
 
   <div class="row">
     
     <div class="col-md-6 col-lg-6">
       <div class="text-center">
-        <img src="{{details.screenshot.url}}" class="img-fluid detailimage" alt="project display">
+        <img src="{{details.image.url}}" class="img-fluid detailimage" alt="project display">
       </div>
     </div>
 
     <div class="col-md-5 col-lg-5">
       <hr>
       <h2 class="text-center" style="color: brown; text-decoration:underline;">Description</h2>
-      <p class="text-center">{{details.project_description}}</p>
+      <p class="text-center">{{details.description}}</p>
       <p><strong><small>Posted on: <em>{{details.date_posted}}</em></small></strong></p>
       <p><small><em>Posted By: <strong>{{details.user}}</strong></em></small></p>
-      <a href="{{details.live_link}}" target="_blank"><strong>Live Link</strong></a>
+      <a href="{{details.url}}" target="_blank"><strong>Live Link</strong></a>
       <hr>
 
       <form action="{%url 'submit_rating' details.id %}" method="post">

@@ -40,7 +40,7 @@
   <div class="mt-4">
     <h2 class="text-center">Ratings</h2>
 
-    <div class="table-responsive">
+    <div class="table-responsive" id ="table">
       <table class="table text-center">
         <thead>
           <tr>
@@ -51,13 +51,13 @@
             <th scope="col">Avg Score</th>
           </tr>
         </thead>
-        {%for vote in votes%}
+        {%for rate in rates%}
         <tbody>
           <tr>
-            <td>{{vote.user}}</td>
-            <td>{{vote.design_score}}</td>
-            <td>{{vote.usability_score}}</td>
-            <td>{{vote.content_score}}</td>
+            <td>{{rate.user}}</td>
+            <td>{{rate.design}}</td>
+            <td>{{rate.usability}}</td>
+            <td>{{rate.content}}</td>
             <td><small><b><em style="color: brown;"></em></b></small></td>
           </tr>
         </tbody>

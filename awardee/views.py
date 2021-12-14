@@ -25,6 +25,7 @@ def home(request):
     else:
             form=AddProjectForm()
     return render(request,'index.html',{'form':form,'projects':project})
+@login_required(login_url='/accounts/login/')
 def profile(request,user_id):
 
     current_user=get_object_or_404(User,id=user_id)
@@ -33,6 +34,7 @@ def profile(request,user_id):
     profile = Profile.objects.filter(id = current_user.id).first()
     form=AddProjectForm()
     return render(request, 'profile/profile.html', {"projects": projects,'form':form, "profile": profile})
+  
 def update_profile(request):
   	#Get the profile
     current_user=request.user
@@ -47,6 +49,7 @@ def update_profile(request):
     else:
         form=UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'form':form})
+@login_required(login_url='/accounts/login/')
 def project_details(request, project_id):
   form = RatingForm(request.POST)
   try:
@@ -56,6 +59,7 @@ def project_details(request, project_id):
     raise Http404
   
   return render(request, 'pro_details.html', {"details":project_details, "rates":project_rates, "form":form})
+@login_required(login_url='/accounts/login/')
 def search_results(request):
   if 'name' in request.GET and request.GET["name"]:
     name = request.GET.get('name')
@@ -65,6 +69,7 @@ def search_results(request):
     return render(request, 'search.html', {"users": users, "project_images": images})
   else:
     return render(request, 'search.html')
+@login_required(login_url='/accounts/login/')
 def submit_rates(request, project_id):
   url = request.META.get('HTTP_REFERER')
   if request.method == 'POST':

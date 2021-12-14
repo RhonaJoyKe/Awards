@@ -60,15 +60,16 @@ def project_details(request, project_id):
   
   return render(request, 'pro_details.html', {"details":project_details, "rates":project_rates, "form":form})
 @login_required(login_url='/accounts/login/')
-def search_results(request):
-  if 'name' in request.GET and request.GET["name"]:
-    name = request.GET.get('name')
-    users = Profile.search_profiles(name)
-    images = Project.search_project(name)
-    print(users)
-    return render(request, 'search.html', {"users": users, "project_images": images})
+def search_projects(request):
+  if 'search' in request.GET and request.GET['search']:
+    title_search = request.GET.get('search')
+    searched_projects = Project.search_by_title(title_search)
+    message = f"{title_search}"
+    return render(request, 'search-results.html', {"message":message, "projects":searched_projects})
   else:
-    return render(request, 'search.html')
+    message = "You have not yer made a search"
+    return render(request, 'search.html', {"message":message})
+
 @login_required(login_url='/accounts/login/')
 def submit_rates(request, project_id):
   url = request.META.get('HTTP_REFERER')

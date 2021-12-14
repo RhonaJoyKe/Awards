@@ -64,7 +64,7 @@ def search_results(request):
     return render(request, 'search.html', {"users": users, "project_images": images})
   else:
     return render(request, 'search.html')
-def submitrates(request, project_id):
+def submit_rates(request, project_id):
   url = request.META.get('HTTP_REFERER')
   if request.method == 'POST':
     try:

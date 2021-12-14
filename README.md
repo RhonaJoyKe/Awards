@@ -1,10 +1,10 @@
-# Insta Clone
+# Awards
 
 #### Created By Rhonajoy
 
 ## Description
 
-A django based application that is a replication of the instagram app. Users are able to log in, register if they have no accounts.Like pictures and comment on pictures as well as search users based on their profile.Users are also able to update their profiles and add posts.
+A django based application that allows a user to post various projects they have worked on.A user is able to see the deecription ,the url to the project. Users are able rate the project as well.
 ## Setup Requirements
 
 - Git

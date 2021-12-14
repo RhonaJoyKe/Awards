@@ -118,6 +118,8 @@ class Rating(models.Model):
 
     def save_ratings(self):
         self.save()
+    def delete_ratings(self):
+        self.delete()
         
     @classmethod
     def filter_by_id(cls, id):

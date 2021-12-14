@@ -33,6 +33,22 @@ class ProjectTestCase(TestCase):
     def test_update(self):
         self.user.save()
         self.project.save_project()
-   
+    def test_delete(self):
+        self.user.save()
+        self.project.save_project()
+        self.rate.save_ratings()
+      
+        Rating.objects.get(id =self.rate.id).delete()
+        Project.objects.get(id =self.project.id).delete()
+        User.objects.get(id =self.user.id).delete()
+        rates=Rating.objects.all()
+        projects=Project.objects.all()
+        
+        users=User.objects.all()
+        self.assertTrue(len(rates) == 0)
+        self.assertTrue(len(users) == 0)
+        self.assertTrue(len(projects) == 0)
+       
+    
      
     

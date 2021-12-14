@@ -48,18 +48,7 @@
         </li>
 
       </ul>
-      <div class="navbar-nav" style="margin-left: 30%;">
-        <form class="navbar-form" role="search" method="" action="{% url 'search_results' %}" style="margin-right:150px;" >
-          {% csrf_token %}
-          <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search By ProjectName" name="search">
-          <div class="input-group-btn">
-          <button class="btn btn-warning" style="margin-left: 5px;" type="submit">Search</button>
-          </div>
-          </div>
-          </form>
-        
-      </div>
+     
       <h5 class="navbar-text text-dark">
         Welcome {{ user.username }}
       </h5>

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4%}
+{% load mathfilters %}
 
 
 {% block content %}
@@ -59,7 +60,7 @@
             <td>{{rate.design}}</td>
             <td>{{rate.usability}}</td>
             <td>{{rate.content}}</td>
-            <td><small><b><em style="color: brown;"></em></b></small></td>
+            <td>{{ rate.design|add:rate.usability|add:rate.content|div:3}}</td>
           </tr>
         </tbody>
         {%endfor%}

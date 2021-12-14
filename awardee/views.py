@@ -66,14 +66,15 @@ def search_results(request):
   if 'search' in request.GET and request.GET['search']:
     
     title_search = request.GET.get('search')
+    print(title_search)
     searched_projects = Project.search_by_title(title_search)
   
     message = f"{title_search}"
-    return render(request, 'search-results.html', {"message":message, "projects":searched_projects})
+    return render(request, 'search.html', {"message":message, "projects":searched_projects,"form":form})
   else:
     message = "You have not yet made a search"
 
-    return render(request, 'search.html', {"message":message,"form":form})
+    return render(request, 'search.html', {"message":message})
 
 
 @login_required(login_url='/accounts/login/')

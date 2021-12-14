@@ -24,7 +24,7 @@
         {% if projects %}
         {% for project in projects %}
         <div class="col-md-4">
-        <a href="{% url 'project_details' project_id=project.id%}" class="thumbnail">
+        <a href="{% url 'projectdetails' project_id=project.id%}" class="thumbnail">
             <div class="card">
               <div class="card-header">
                 <p><b>{{project.title}}</b></p>

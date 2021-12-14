@@ -13,23 +13,24 @@
       <div class="text-center">
         <img src="{{details.image.url}}" class="img-fluid detailimage" alt="project display">
       </div> <br>
-      <h2 class="text-center" style="color: brown; text-decoration:underline;">Description</h2>
+      <h2 class="text-center">Description</h2>
       <p class="text-center">{{details.description}}</p>
-      <p><strong><small>Posted on: <em>{{details.date_posted}}</em></small></strong></p>
-      <p><small><em>Posted By: <strong>{{details.user}}</strong></em></small></p>
-      <a href="{{details.url}}" target="_blank"><strong>Live Link</strong></a>
+      <p>Posted By: <strong>{{details.user}}</strong></p>
+      <p><strong>Posted on: {{details.posted_date}}</strong></p>
+     
+      <a href="{{details.url}}" target="_blank"><strong> Link</strong></a>
       
     </div>
   <div class="col-md-2"></div>
-    <div class="col-md-5">
+    <div class="col-md-5" id="rates">
       <form action="{%url 'submitrates' details.id %}" method="post">
         {% csrf_token %}
-        <h2 class="text-center" style="color: brown; text-decoration:underline;">Rate the project</h2>
+        <h2 class="text-center">Rate the project</h2>
 
         {% bootstrap_form form %}
 
         <div class="text-center">
-          <input type="submit" class="btn btn-sm btn-success" value="post rating">
+          <input type="submit" class="btn btn-sm btn-dark" value="post rating">
         </div>
       </form>
 
@@ -37,7 +38,7 @@
   </div>
 
   <div class="mt-4">
-    <h2 class="text-center" style="color: brown; text-decoration:underline;">Ratings</h2>
+    <h2 class="text-center">Ratings</h2>
 
     <div class="table-responsive">
       <table class="table text-center">
@@ -47,7 +48,7 @@
             <th scope="col">design score</th>
             <th scope="col">usability score</th>
             <th scope="col">content score</th>
-            <th scope="col" style="color: brown;">Avg Score</th>
+            <th scope="col">Avg Score</th>
           </tr>
         </thead>
         {%for vote in votes%}
